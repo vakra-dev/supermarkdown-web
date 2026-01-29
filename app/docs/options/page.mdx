@@ -1,0 +1,138 @@
+export const metadata = {
+  title: 'Options',
+};
+
+# Options
+
+All options are optional and have sensible defaults.
+
+## headingStyle
+
+**Type:** `'atx' | 'setext'`
+**Default:** `'atx'`
+
+Controls how headings are formatted.
+
+**ATX style (default):**
+```markdown
+# Heading 1
+## Heading 2
+### Heading 3
+```
+
+**Setext style:**
+```markdown
+Heading 1
+=========
+
+Heading 2
+---------
+```
+
+Note: Setext only supports h1 and h2. Deeper headings fall back to ATX.
+
+---
+
+## linkStyle
+
+**Type:** `'inline' | 'referenced'`
+**Default:** `'inline'`
+
+Controls how links are formatted.
+
+**Inline style (default):**
+```markdown
+Check out [this link](https://example.com) for more.
+```
+
+**Referenced style:**
+```markdown
+Check out [this link][1] for more.
+
+[1]: https://example.com
+```
+
+---
+
+## codeFence
+
+**Type:** `` '`' | '~' ``
+**Default:** `` '`' ``
+
+Character used for fenced code blocks.
+
+**Backticks (default):**
+````markdown
+```javascript
+const x = 1;
+```
+````
+
+**Tildes:**
+```markdown
+~~~javascript
+const x = 1;
+~~~
+```
+
+---
+
+## bulletMarker
+
+**Type:** `'-' | '*' | '+'`
+**Default:** `'-'`
+
+Character used for unordered list items.
+
+```markdown
+- Item with dash (default)
+* Item with asterisk
++ Item with plus
+```
+
+---
+
+## baseUrl
+
+**Type:** `string | undefined`
+**Default:** `undefined`
+
+Base URL for resolving relative links.
+
+```typescript
+convert('<a href="/page">Link</a>', {
+  baseUrl: 'https://example.com'
+});
+// => [Link](https://example.com/page)
+```
+
+---
+
+## excludeSelectors
+
+**Type:** `string[]`
+**Default:** `[]`
+
+CSS selectors for elements to exclude from conversion.
+
+```typescript
+convert(html, {
+  excludeSelectors: ['nav', '.sidebar', '#ads', 'script', 'style']
+});
+```
+
+---
+
+## includeSelectors
+
+**Type:** `string[]`
+**Default:** `[]`
+
+CSS selectors for elements to force-include (overrides excludeSelectors).
+
+```typescript
+convert(html, {
+  excludeSelectors: ['.sidebar'],
+  includeSelectors: ['.sidebar .important']
+});
+```

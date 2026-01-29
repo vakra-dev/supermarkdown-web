@@ -1,0 +1,73 @@
+export const metadata = {
+  title: 'Getting Started',
+};
+
+# Getting Started
+
+Convert HTML to Markdown with supermarkdown - a fast, Rust-powered converter with full GFM support.
+
+## Installation
+
+Install via npm, yarn, or pnpm:
+
+```bash
+# npm
+npm install @vakra-dev/supermarkdown
+
+# yarn
+yarn add @vakra-dev/supermarkdown
+
+# pnpm
+pnpm add @vakra-dev/supermarkdown
+```
+
+## Basic Usage
+
+Import and use the `convert` function:
+
+```typescript
+import { convert } from '@vakra-dev/supermarkdown';
+
+const html = '<h1>Hello World</h1><p>This is a <strong>test</strong>.</p>';
+const markdown = convert(html);
+
+console.log(markdown);
+// # Hello World
+//
+// This is a **test**.
+```
+
+## With Options
+
+Customize the output using options:
+
+```typescript
+import { convert } from '@vakra-dev/supermarkdown';
+
+const markdown = convert(html, {
+  headingStyle: 'setext',
+  linkStyle: 'referenced',
+  bulletMarker: '*',
+});
+```
+
+## TypeScript
+
+Full TypeScript support is included out of the box:
+
+```typescript
+import { convert, ConvertOptions } from '@vakra-dev/supermarkdown';
+
+const options: ConvertOptions = {
+  headingStyle: 'atx',
+  excludeSelectors: ['nav', '.sidebar'],
+};
+
+const markdown = convert(html, options);
+```
+
+## Next Steps
+
+- Explore the [API Reference](/docs/api) for all available functions
+- Check out [Options](/docs/options) for configuration details
+- Try the [Playground](/playground) for interactive conversion

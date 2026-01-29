@@ -1,0 +1,147 @@
+export const metadata = {
+  title: 'Edge Cases',
+};
+
+# Edge Cases
+
+How supermarkdown handles tricky conversions.
+
+## Character Escaping
+
+Special Markdown characters are escaped when needed:
+
+| Character | Context | Escaped |
+|-----------|---------|---------|
+| `*` | In text | `\*` |
+| `_` | In text | `\_` |
+| `[` | In text | `\[` |
+| `]` | In text | `\]` |
+| `` ` `` | In code | Uses more backticks |
+| `|` | In tables | `\|` |
+
+**Example:**
+
+```html
+<p>5 * 3 = 15</p>
+<p>See [section A] for details.</p>
+```
+
+```markdown
+5 \* 3 = 15
+
+See \[section A\] for details.
+```
+
+## Lists
+
+### Ordered List Start
+
+The `start` attribute is preserved:
+
+```html
+<ol start="5">
+  <li>Five</li>
+  <li>Six</li>
+</ol>
+```
+
+```markdown
+5. Five
+6. Six
+```
+
+### Nested Lists
+
+Deep nesting is fully supported:
+
+```html
+<ul>
+  <li>Item
+    <ul>
+      <li>Nested
+        <ol>
+          <li>Deep</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+```
+
+### Block Content in Lists
+
+Paragraphs and code blocks in list items work correctly with proper indentation.
+
+## Code Blocks
+
+### Language Detection
+
+Languages are detected from multiple class patterns:
+
+- `language-javascript`
+- `lang-javascript`
+- `highlight-javascript`
+- `hljs language-javascript`
+
+### Backticks in Code
+
+When code contains backticks, more backticks are used:
+
+```html
+<code>Use `template` literals</code>
+```
+
+Outputs: ``` `` Use `template` literals `` ```
+
+### Line Number Gutters
+
+Line number spans (common in syntax highlighters) are automatically removed.
+
+## Links
+
+### Empty href
+
+Links with empty or missing href become plain text:
+
+```html
+<a href="">Click here</a>
+```
+
+```markdown
+Click here
+```
+
+### Special Characters in URLs
+
+URLs are properly percent-encoded:
+
+```html
+<a href="https://example.com/path with spaces">Link</a>
+```
+
+```markdown
+[Link](https://example.com/path%20with%20spaces)
+```
+
+### Autolinks
+
+Email addresses and URLs can become autolinks:
+
+```html
+<a href="mailto:test@example.com">test@example.com</a>
+```
+
+```markdown
+<test@example.com>
+```
+
+## Limitations
+
+| Feature | Behavior |
+|---------|----------|
+| colspan/rowspan | First cell content only |
+| Nested tables | Flattened |
+| Forms | Skipped |
+| iframe/video | Placeholder text |
+| SVG | Skipped |
+| MathML | Preserved as HTML |

@@ -1,0 +1,328 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Amber accent - used sparingly as light source */
+  --accent-400: #fbbf24;
+  --accent-500: #f59e0b;
+  --accent-600: #d97706;
+
+  /* Neutral palette - improved for better readability */
+  --neutral-50: #fafafa;
+  --neutral-100: #f4f4f5;
+  --neutral-200: #e4e4e7;
+  --neutral-300: #d4d4d8;
+  --neutral-400: #a1a1aa;
+  --neutral-500: #71717a;
+  --neutral-600: #52525b;
+  --neutral-700: #3f3f46;
+  --neutral-800: #27272a;
+  --neutral-900: #18181b;
+  --neutral-950: #09090b;
+
+  /* Dark theme (only) */
+  --bg: var(--neutral-950);
+  --bg-surface: var(--neutral-900);
+  --bg-elevated: var(--neutral-800);
+  --text: var(--neutral-100);
+  --text-secondary: var(--neutral-300);
+  --text-muted: var(--neutral-400);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.2);
+  --glow: 0 0 20px rgba(251, 191, 36, 0.15);
+  --glow-strong: 0 0 30px rgba(251, 191, 36, 0.25);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+/* Background grid */
+.bg-grid {
+  background-image: radial-gradient(circle, var(--neutral-600) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-700);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-600);
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-500);
+  color: var(--neutral-950);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(24, 24, 27, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Glow utilities */
+.glow {
+  box-shadow: var(--glow);
+}
+
+.glow-strong {
+  box-shadow: var(--glow-strong);
+}
+
+.glow-border {
+  box-shadow: inset 0 0 0 1px var(--accent-500), var(--glow);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(180deg, var(--neutral-100) 0%, var(--neutral-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Beam animation keyframes */
+@keyframes beam {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.beam-particle {
+  animation: beam 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Status indicator pulse */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 4px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 12px currentColor;
+  }
+}
+
+.status-pulse {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+/* Prose overrides for MDX documentation */
+.prose {
+  --tw-prose-body: var(--neutral-200);
+  --tw-prose-headings: var(--neutral-50);
+  --tw-prose-links: var(--accent-500);
+  --tw-prose-code: var(--accent-400);
+  --tw-prose-pre-bg: var(--neutral-900);
+  max-width: none;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--neutral-200);
+}
+
+/* Inline code */
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *, pre *)) {
+  background: var(--neutral-800);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-weight: 400;
+  color: var(--accent-400);
+}
+
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::before,
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+  content: none;
+}
+
+/* Code blocks */
+.prose :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background: var(--neutral-900);
+  border: 1px solid var(--neutral-800);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose :where(pre code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background: transparent;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--neutral-200);
+}
+
+/* Tables - proper styling */
+.prose :where(table):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  margin: 1.5rem 0;
+  display: table;
+  table-layout: auto;
+}
+
+.prose :where(thead):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-bottom: 1px solid var(--neutral-700);
+}
+
+.prose :where(th):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--neutral-100);
+  background: var(--neutral-800);
+  white-space: nowrap;
+}
+
+.prose :where(th):not(:where([class~="not-prose"], [class~="not-prose"] *)):first-child {
+  border-radius: 6px 0 0 0;
+}
+
+.prose :where(th):not(:where([class~="not-prose"], [class~="not-prose"] *)):last-child {
+  border-radius: 0 6px 0 0;
+}
+
+.prose :where(td):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--neutral-800);
+  color: var(--neutral-200);
+  vertical-align: top;
+}
+
+.prose :where(tbody tr):not(:where([class~="not-prose"], [class~="not-prose"] *)):last-child td {
+  border-bottom: none;
+}
+
+.prose :where(tbody tr):not(:where([class~="not-prose"], [class~="not-prose"] *)):hover {
+  background: var(--neutral-900);
+}
+
+/* Horizontal rules */
+.prose :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-color: var(--neutral-800);
+  margin: 2.5rem 0;
+}
+
+/* Blockquotes */
+.prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border-left: 2px solid var(--accent-500);
+  padding-left: 1rem;
+  color: var(--neutral-300);
+  font-style: normal;
+}
+
+/* Strong text */
+.prose :where(strong):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--neutral-100);
+  font-weight: 600;
+}
+
+/* Links */
+.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--accent-500);
+  text-decoration: none;
+}
+
+.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)):hover {
+  text-decoration: underline;
+}
+
+/* Headings */
+.prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  font-size: 2.75rem;
+  margin-bottom: 1rem;
+  color: var(--neutral-50);
+}
+
+.prose :where(h2):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  font-size: 1.875rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--neutral-50);
+  scroll-margin-top: 5rem;
+}
+
+.prose :where(h3):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--neutral-100);
+  scroll-margin-top: 5rem;
+}
+
+/* Paragraphs */
+.prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin: 1rem 0;
+  line-height: 1.75;
+  color: var(--neutral-200);
+}
+
+/* Lists */
+.prose :where(ul, ol):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose :where(li):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin: 0.5rem 0;
+  color: var(--neutral-200);
+}
+
+.prose :where(li)::marker {
+  color: var(--neutral-400);
+}
+
+/* Hide footer on playground page */
+body.playground-page footer {
+  display: none;
+}

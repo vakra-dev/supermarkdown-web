@@ -1,0 +1,82 @@
+export const metadata = {
+  title: 'Supported Elements',
+};
+
+# Supported Elements
+
+Comprehensive list of HTML elements and their Markdown output.
+
+## Block Elements
+
+| HTML | Markdown |
+|------|----------|
+| `<h1>` - `<h6>` | `#` - `######` headings |
+| `<p>` | Paragraphs |
+| `<blockquote>` | `>` block quotes |
+| `<ul>`, `<ol>` | Lists with `-` or numbers |
+| `<pre><code>` | Fenced code blocks |
+| `<table>` | GFM tables |
+| `<hr>` | `---` |
+| `<details>` | Preserved as HTML |
+| `<figure>` | Image with caption |
+
+## Inline Elements
+
+| HTML | Markdown |
+|------|----------|
+| `<a>` | `[text](url)` |
+| `<img>` | `![alt](src)` |
+| `<strong>`, `<b>` | `**bold**` |
+| `<em>`, `<i>` | `*italic*` |
+| `<code>` | `` `code` `` |
+| `<del>`, `<s>` | `~~strikethrough~~` |
+| `<br>` | Line break (two spaces or `\`) |
+| `<sub>` | `<sub>subscript</sub>` (preserved) |
+| `<sup>` | `<sup>superscript</sup>` (preserved) |
+
+## HTML Passthrough
+
+Elements without Markdown equivalents are preserved as HTML:
+
+- `<kbd>` - Keyboard input
+- `<mark>` - Highlighted text
+- `<abbr>` - Abbreviations
+- `<samp>` - Sample output
+- `<var>` - Variables
+
+## Tables
+
+Full GFM table support with alignment:
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th align="left">Left</th>
+      <th align="center">Center</th>
+      <th align="right">Right</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+Converts to:
+
+```markdown
+| Left | Center | Right |
+|:-----|:------:|------:|
+| A    | B      | C     |
+```
+
+**Table features:**
+- Alignment via `align` attribute
+- Pipes in cells are escaped
+- Missing cells are padded
+- Caption support via `<caption>`

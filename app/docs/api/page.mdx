@@ -1,0 +1,80 @@
+export const metadata = {
+  title: 'API Reference',
+};
+
+# API Reference
+
+## convert()
+
+Synchronous HTML to Markdown conversion.
+
+```typescript
+function convert(html: string, options?: ConvertOptions): string
+```
+
+**Parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `html` | `string` | The HTML string to convert |
+| `options` | `ConvertOptions` | Optional configuration |
+
+**Returns:** `string` - The converted Markdown
+
+**Example:**
+
+```typescript
+import { convert } from '@vakra-dev/supermarkdown';
+
+const markdown = convert('<h1>Hello</h1><p>World</p>');
+// => "# Hello\n\nWorld"
+```
+
+---
+
+## convertAsync()
+
+Asynchronous conversion for large documents. Useful when you don't want to block the main thread.
+
+```typescript
+function convertAsync(html: string, options?: ConvertOptions): Promise<string>
+```
+
+**Parameters:**
+
+| Name | Type | Description |
+|------|------|-------------|
+| `html` | `string` | The HTML string to convert |
+| `options` | `ConvertOptions` | Optional configuration |
+
+**Returns:** `Promise<string>` - The converted Markdown
+
+**Example:**
+
+```typescript
+import { convertAsync } from '@vakra-dev/supermarkdown';
+
+const markdown = await convertAsync(largeHtmlDocument, {
+  excludeSelectors: ['script', 'style', 'nav'],
+});
+```
+
+---
+
+## ConvertOptions
+
+Configuration options for conversion.
+
+```typescript
+interface ConvertOptions {
+  headingStyle?: 'atx' | 'setext';
+  linkStyle?: 'inline' | 'referenced';
+  codeFence?: '`' | '~';
+  bulletMarker?: '-' | '*' | '+';
+  baseUrl?: string;
+  excludeSelectors?: string[];
+  includeSelectors?: string[];
+}
+```
+
+See [Options](/docs/options) for detailed documentation of each option.

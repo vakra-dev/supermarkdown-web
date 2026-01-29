@@ -1,0 +1,106 @@
+export const metadata = {
+  title: 'Rust Usage',
+};
+
+# Rust Usage
+
+Use supermarkdown directly in Rust projects.
+
+## Installation
+
+Add to your `Cargo.toml`:
+
+```toml
+[dependencies]
+supermarkdown = "0.0.5"
+```
+
+## Basic Usage
+
+```rust
+use supermarkdown::convert;
+
+fn main() {
+    let html = "<h1>Hello</h1><p>World</p>";
+    let markdown = convert(html);
+
+    println!("{}", markdown);
+    // # Hello
+    //
+    // World
+}
+```
+
+## With Options
+
+```rust
+use supermarkdown::{convert_with_options, Options, HeadingStyle, LinkStyle};
+
+fn main() {
+    let html = "<h1>Title</h1><p>Content</p>";
+
+    let options = Options::new()
+        .heading_style(HeadingStyle::Setext)
+        .link_style(LinkStyle::Referenced)
+        .bullet_marker('*');
+
+    let markdown = convert_with_options(html, &options);
+
+    println!("{}", markdown);
+}
+```
+
+## Options Builder
+
+```rust
+use supermarkdown::Options;
+
+let options = Options::new()
+    .heading_style(HeadingStyle::Atx)      // or Setext
+    .link_style(LinkStyle::Inline)          // or Referenced
+    .code_fence('`')                        // or '~'
+    .bullet_marker('-')                     // or '*' or '+'
+    .base_url(Some("https://example.com".to_string()))
+    .exclude_selectors(vec!["nav".to_string(), ".ads".to_string()])
+    .include_selectors(vec![".content".to_string()]);
+```
+
+## Feature Flags
+
+Available Cargo features:
+
+| Feature | Description | Default |
+|---------|-------------|---------|
+| `default` | All features enabled | Yes |
+
+## CLI
+
+Install the command-line tool:
+
+```bash
+cargo install supermarkdown-cli
+```
+
+Usage:
+
+```bash
+# Convert file
+supermarkdown input.html > output.md
+
+# Convert stdin
+cat page.html | supermarkdown
+
+# With options
+supermarkdown --heading-style setext input.html
+```
+
+## Performance
+
+supermarkdown is written in pure Rust with:
+
+- O(n) single-pass conversion
+- Zero-copy parsing where possible
+- No regex in hot paths
+- Minimal allocations
+
+Typical performance: **10-50x faster** than JavaScript alternatives.
