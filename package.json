@@ -1,5 +1,5 @@
 {
-  "name": "supermarkdown-web",
+  "name": "@vakra-dev/supermarkdown-web",
   "version": "1.0.0",
   "private": true,
   "scripts": {
