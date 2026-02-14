@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { PromoBanner } from '@/components/layout/promo-banner';
+import { MainContent } from '@/components/layout/main-content';
 
 export const metadata: Metadata = {
   title: {
@@ -31,8 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col antialiased bg-neutral-950">
+        <PromoBanner />
         <Header />
-        <main className="flex-1 pt-14">{children}</main>
+        <MainContent>{children}</MainContent>
         <Footer />
       </body>
     </html>

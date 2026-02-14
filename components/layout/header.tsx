@@ -3,9 +3,22 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Github } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export function Header() {
   const pathname = usePathname();
+  const [bannerVisible, setBannerVisible] = useState(false);
+
+  useEffect(() => {
+    const checkBanner = () => {
+      const bannerDismissed = localStorage.getItem('supermarkdown-top-promo-dismissed');
+      setBannerVisible(!bannerDismissed);
+    };
+
+    checkBanner();
+    window.addEventListener('storage', checkBanner);
+    return () => window.removeEventListener('storage', checkBanner);
+  }, []);
 
   const isActive = (path: string) => {
     if (path === '/docs') return pathname?.startsWith('/docs');
@@ -13,7 +26,10 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-neutral-800/50 bg-neutral-950/80 backdrop-blur-xl">
+    <header
+      className="fixed left-0 right-0 z-50 border-b border-neutral-800/50 bg-neutral-950/80 backdrop-blur-xl transition-all duration-300"
+      style={{ top: bannerVisible ? '40px' : '0' }}
+    >
       <div className="container mx-auto px-4 h-14 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-1 font-semibold text-xl group">
           <span className="text-accent-500 transition-colors group-hover:text-accent-400">super</span>
