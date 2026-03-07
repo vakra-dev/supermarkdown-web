@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { tools, implementedSlugs } from '@/lib/tools/registry';
 
 export const metadata: Metadata = {
-  title: 'Free Markdown Converter & Tools Online | supermarkdown',
+  title: 'Free Markdown Converter & Tools Online',
   description:
     'Convert, edit, and format Markdown - powered by Rust WASM. All tools are free. No sign-up required.',
   alternates: { canonical: 'https://supermarkdown.dev/tools' },

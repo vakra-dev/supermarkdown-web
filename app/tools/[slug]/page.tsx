@@ -58,6 +58,7 @@ export async function generateMetadata({
       url: `https://supermarkdown.dev/tools/${tool.slug}`,
       siteName: 'supermarkdown',
       type: 'website',
+      images: ['/og-image.png'],
     },
     twitter: { card: 'summary_large_image' },
   };

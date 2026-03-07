@@ -14,10 +14,10 @@ export interface ToolConfig {
 export const tools: ToolConfig[] = [
   {
     slug: 'html-to-markdown',
-    title: 'HTML to Markdown Converter - Free Online | supermarkdown',
+    title: 'HTML to Markdown Converter - Free Online',
     h1: 'HTML to Markdown Converter',
     description:
-      'Convert HTML to clean Markdown instantly. Powered by Rust WASM - 10x faster than alternatives. Free, no sign-up, runs in your browser.',
+      'Free online HTML to Markdown converter powered by Rust WASM. 10x faster than alternatives, runs entirely in your browser. No sign-up required.',
     category: 'converter',
     priority: 'P0',
     keywords: ['html to markdown', 'html to md', 'html markdown converter'],
@@ -52,10 +52,10 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'markdown-to-html',
-    title: 'Markdown to HTML Converter - Free Online | supermarkdown',
+    title: 'Markdown to HTML Converter - Free Online',
     h1: 'Markdown to HTML Converter',
     description:
-      'Convert Markdown to clean HTML instantly. Supports GFM tables, code blocks, and more. Free, no sign-up, runs in your browser.',
+      'Free online Markdown to HTML converter with GFM support. Tables, code blocks, task lists, and more. Runs in your browser, no sign-up required.',
     category: 'converter',
     priority: 'P0',
     keywords: ['markdown to html', 'md to html', 'markdown html converter'],
@@ -90,7 +90,7 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'markdown-to-docx',
-    title: 'Markdown to Word Converter - Free Online DOCX Export | supermarkdown',
+    title: 'Markdown to Word Converter - Free Online DOCX Export',
     h1: 'Markdown to Word Converter',
     description:
       'Convert Markdown to Word documents (.docx) instantly. Preserves headings, tables, code blocks, and formatting. Free, no sign-up.',
@@ -128,10 +128,10 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'csv-to-markdown',
-    title: 'CSV to Markdown Table Converter - Free Online | supermarkdown',
+    title: 'CSV to Markdown Table Converter - Free Online',
     h1: 'CSV to Markdown Table Converter',
     description:
-      'Convert CSV data to Markdown tables instantly. Auto-detects delimiters, supports column alignment. Free, runs in your browser.',
+      'Free CSV to Markdown table converter. Auto-detects delimiters, supports column alignment. Runs in your browser, no sign-up required.',
     category: 'converter',
     priority: 'P1',
     keywords: ['csv to markdown', 'csv to markdown table', 'csv markdown converter'],
@@ -161,10 +161,10 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'json-to-markdown',
-    title: 'JSON to Markdown Converter - Free Online | supermarkdown',
+    title: 'JSON to Markdown Converter - Free Online',
     h1: 'JSON to Markdown Converter',
     description:
-      'Convert JSON data to Markdown tables and lists. Supports arrays, objects, and nested structures. Free, runs in your browser.',
+      'Free JSON to Markdown converter. Transform arrays into tables, objects into lists, or wrap in code blocks. Runs in your browser.',
     category: 'converter',
     priority: 'P1',
     keywords: ['json to markdown', 'json to markdown table', 'json markdown converter'],
@@ -189,10 +189,10 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'markdown-editor',
-    title: 'Markdown Editor - Free Online | supermarkdown',
+    title: 'Markdown Editor - Free Online',
     h1: 'Markdown Editor',
     description:
-      'Write and preview Markdown in real-time. Syntax highlighting, toolbar, export to .md or HTML. Free, no sign-up.',
+      'Free online Markdown editor with live preview. Syntax highlighting, formatting toolbar, and export to .md or HTML. No sign-up required.',
     category: 'tool',
     priority: 'P1',
     keywords: ['markdown editor', 'markdown editor online', 'online markdown editor'],
@@ -217,7 +217,7 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'markdown-table',
-    title: 'Markdown Table Generator - Free Online | supermarkdown',
+    title: 'Markdown Table Generator - Free Online',
     h1: 'Markdown Table Generator',
     description:
       'Build Markdown tables visually. Add rows, columns, set alignment, and copy the output. Free, no sign-up.',
@@ -245,10 +245,10 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'markdown-diff',
-    title: 'Markdown Diff Tool - Free Online | supermarkdown',
+    title: 'Markdown Diff Tool - Free Online',
     h1: 'Markdown Diff Tool',
     description:
-      'Compare two Markdown documents side by side. Highlights additions, deletions, and modifications. Free, runs in your browser.',
+      'Free Markdown diff tool to compare two documents side by side. Highlights additions, deletions, and modifications in your browser.',
     category: 'tool',
     priority: 'P2',
     keywords: ['markdown diff', 'markdown compare', 'diff markdown'],
@@ -268,10 +268,10 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'markdown-formatter',
-    title: 'Markdown Formatter - Free Online | supermarkdown',
+    title: 'Markdown Formatter - Free Online',
     h1: 'Markdown Formatter',
     description:
-      'Format and clean up Markdown. Consistent headings, normalized lists, proper spacing. Free, runs in your browser.',
+      'Free Markdown formatter and beautifier. Normalizes headings, list markers, and spacing for clean, consistent Markdown. Runs in your browser.',
     category: 'tool',
     priority: 'P2',
     keywords: ['markdown formatter', 'markdown beautifier', 'format markdown'],
@@ -291,10 +291,10 @@ export const tools: ToolConfig[] = [
   },
   {
     slug: 'readme-generator',
-    title: 'README Generator - Free Online | supermarkdown',
+    title: 'README Generator - Free Online',
     h1: 'README Generator',
     description:
-      'Generate professional README.md files with a guided form. Project name, installation, usage, API docs, and more. Free.',
+      'Free README generator with guided form. Create professional README.md files with project name, installation, usage, and API docs.',
     category: 'tool',
     priority: 'P2',
     keywords: ['readme generator', 'readme template', 'generate readme'],
