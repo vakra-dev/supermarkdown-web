@@ -6,6 +6,7 @@ import { useDebouncedCallback } from 'use-debounce';
 import { Settings, Copy, Download, Check, ChevronDown, X } from 'lucide-react';
 import { convert, ConvertOptions, ConvertResult } from '@/lib/wasm';
 import { examples } from '@/lib/examples';
+import { useTheme } from '@/components/theme-provider';
 import { OptionsPanel } from './options-panel';
 
 // Dynamic import Monaco to avoid SSR issues
@@ -20,6 +21,9 @@ export function Playground() {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [selectedExample, setSelectedExample] = useState(examples[0].id);
   const [copied, setCopied] = useState(false);
+  const { theme } = useTheme();
+
+  const editorTheme = theme === 'dark' ? 'vs-dark' : 'light';
 
   const doConvert = useDebouncedCallback(
     async (input: string, opts: ConvertOptions) => {
@@ -66,15 +70,15 @@ export function Playground() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-3.5rem)] bg-neutral-950">
+    <div className="flex flex-col h-[calc(100vh-3.5rem)] bg-page">
       {/* Toolbar */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800/50 bg-neutral-900/50 backdrop-blur-sm">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-edge/50 bg-surface/50 backdrop-blur-sm">
         <div className="flex items-center gap-4">
           <div className="relative">
             <select
               value={selectedExample}
               onChange={handleExampleChange}
-              className="appearance-none bg-neutral-800/50 border border-neutral-700/50 rounded px-3 py-1.5 pr-8 text-base text-neutral-200 focus:outline-none focus:border-accent-500/50 cursor-pointer"
+              className="appearance-none bg-elevated/50 border border-edge rounded px-3 py-1.5 pr-8 text-base text-fg-secondary focus:outline-none focus:border-accent-fg/50 cursor-pointer"
             >
               {examples.map((ex) => (
                 <option key={ex.id} value={ex.id}>
@@ -82,7 +86,7 @@ export function Playground() {
                 </option>
               ))}
             </select>
-            <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
+            <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-fg-muted pointer-events-none" />
           </div>
         </div>
 
@@ -91,8 +95,8 @@ export function Playground() {
             onClick={() => setIsOptionsOpen(!isOptionsOpen)}
             className={`flex items-center gap-2 px-3 py-1.5 text-base rounded transition-colors ${
               isOptionsOpen
-                ? 'bg-neutral-700/50 text-neutral-100'
-                : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/50'
+                ? 'bg-elevated/50 text-fg'
+                : 'text-fg-muted hover:text-fg-secondary hover:bg-elevated/50'
             }`}
           >
             <Settings className="w-4 h-4" />
@@ -100,7 +104,7 @@ export function Playground() {
           </button>
           <button
             onClick={handleCopy}
-            className="flex items-center gap-2 px-3 py-1.5 text-base text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/50 rounded transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 text-base text-fg-muted hover:text-fg-secondary hover:bg-elevated/50 rounded transition-colors"
           >
             {copied ? (
               <Check className="w-4 h-4 text-green-500" />
@@ -111,7 +115,7 @@ export function Playground() {
           </button>
           <button
             onClick={handleDownload}
-            className="flex items-center gap-2 px-3 py-1.5 text-base text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/50 rounded transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 text-base text-fg-muted hover:text-fg-secondary hover:bg-elevated/50 rounded transition-colors"
           >
             <Download className="w-4 h-4" />
             <span>Download</span>
@@ -124,26 +128,26 @@ export function Playground() {
         {/* Editors */}
         <div className="flex-1 flex flex-col md:flex-row">
           {/* HTML Input */}
-          <div className="flex-1 flex flex-col border-r border-neutral-800/50">
-            <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800/50 bg-neutral-900/30">
+          <div className="flex-1 flex flex-col border-r border-edge/50">
+            <div className="flex items-center justify-between px-4 py-2 border-b border-edge/50 bg-surface/30">
               <div className="flex items-center gap-2">
                 <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-700" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-700" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-700" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-edge-hover" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-edge-hover" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-edge-hover" />
                 </div>
-                <span className="text-sm font-medium text-neutral-400 uppercase tracking-wider ml-2">
+                <span className="text-sm font-medium text-fg-muted uppercase tracking-wider ml-2">
                   HTML
                 </span>
               </div>
             </div>
-            <div className="flex-1 bg-neutral-900/20">
+            <div className="flex-1 bg-surface/20">
               <Editor
                 height="100%"
                 defaultLanguage="html"
                 value={html}
                 onChange={(value) => setHtml(value || '')}
-                theme="vs-dark"
+                theme={editorTheme}
                 options={{
                   minimap: { enabled: false },
                   fontSize: 15,
@@ -168,14 +172,14 @@ export function Playground() {
 
           {/* Markdown Output */}
           <div className="flex-1 flex flex-col">
-            <div className="flex items-center justify-between px-4 py-2 border-b border-neutral-800/50 bg-neutral-900/30">
+            <div className="flex items-center justify-between px-4 py-2 border-b border-edge/50 bg-surface/30">
               <div className="flex items-center gap-2">
                 <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-700" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-700" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-700" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-edge-hover" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-edge-hover" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-edge-hover" />
                 </div>
-                <span className="text-sm font-medium text-neutral-400 uppercase tracking-wider ml-2">
+                <span className="text-sm font-medium text-fg-muted uppercase tracking-wider ml-2">
                   Markdown
                 </span>
               </div>
@@ -186,12 +190,12 @@ export function Playground() {
                 </span>
               )}
             </div>
-            <div className="flex-1 bg-neutral-900/20">
+            <div className="flex-1 bg-surface/20">
               <Editor
                 height="100%"
                 defaultLanguage="markdown"
                 value={result?.markdown || ''}
-                theme="vs-dark"
+                theme={editorTheme}
                 options={{
                   minimap: { enabled: false },
                   fontSize: 15,
@@ -218,12 +222,12 @@ export function Playground() {
 
         {/* Options Panel - Slide over */}
         {isOptionsOpen && (
-          <div className="absolute right-0 top-0 bottom-0 w-72 border-l border-neutral-800/50 bg-neutral-900/95 backdrop-blur-xl shadow-2xl">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-800/50">
-              <span className="text-base font-medium text-neutral-200">Options</span>
+          <div className="absolute right-0 top-0 bottom-0 w-72 border-l border-edge/50 bg-surface/95 backdrop-blur-xl shadow-2xl">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-edge/50">
+              <span className="text-base font-medium text-fg-secondary">Options</span>
               <button
                 onClick={() => setIsOptionsOpen(false)}
-                className="p-1 text-neutral-400 hover:text-neutral-300 transition-colors"
+                className="p-1 text-fg-muted hover:text-fg-secondary transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>

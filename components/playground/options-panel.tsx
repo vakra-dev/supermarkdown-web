@@ -24,11 +24,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
     <div className="p-4 space-y-5 overflow-y-auto max-h-[calc(100vh-8rem)]">
       {/* Heading Style */}
       <div>
-        <label className="block text-sm font-medium text-neutral-400 uppercase tracking-wider mb-2">
+        <label className="block text-sm font-medium text-fg-muted uppercase tracking-wider mb-2">
           Heading Style
         </label>
         <div className="space-y-1.5">
-          <label className="flex items-center gap-2 text-base text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base text-fg-secondary cursor-pointer">
             <input
               type="radio"
               name="headingStyle"
@@ -38,7 +38,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
             />
             <span>ATX (# Heading)</span>
           </label>
-          <label className="flex items-center gap-2 text-base text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base text-fg-secondary cursor-pointer">
             <input
               type="radio"
               name="headingStyle"
@@ -53,11 +53,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
       {/* Link Style */}
       <div>
-        <label className="block text-sm font-medium text-neutral-400 uppercase tracking-wider mb-2">
+        <label className="block text-sm font-medium text-fg-muted uppercase tracking-wider mb-2">
           Link Style
         </label>
         <div className="space-y-1.5">
-          <label className="flex items-center gap-2 text-base text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base text-fg-secondary cursor-pointer">
             <input
               type="radio"
               name="linkStyle"
@@ -67,7 +67,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
             />
             <span>Inline [text](url)</span>
           </label>
-          <label className="flex items-center gap-2 text-base text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base text-fg-secondary cursor-pointer">
             <input
               type="radio"
               name="linkStyle"
@@ -82,11 +82,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
       {/* Code Fence */}
       <div>
-        <label className="block text-sm font-medium text-neutral-400 uppercase tracking-wider mb-2">
+        <label className="block text-sm font-medium text-fg-muted uppercase tracking-wider mb-2">
           Code Fence
         </label>
         <div className="space-y-1.5">
-          <label className="flex items-center gap-2 text-base text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base text-fg-secondary cursor-pointer">
             <input
               type="radio"
               name="codeFence"
@@ -96,7 +96,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
             />
             <span>Backtick (```)</span>
           </label>
-          <label className="flex items-center gap-2 text-base text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base text-fg-secondary cursor-pointer">
             <input
               type="radio"
               name="codeFence"
@@ -111,11 +111,11 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
       {/* Bullet Character */}
       <div>
-        <label className="block text-sm font-medium text-neutral-400 uppercase tracking-wider mb-2">
+        <label className="block text-sm font-medium text-fg-muted uppercase tracking-wider mb-2">
           Bullet Character
         </label>
         <div className="space-y-1.5">
-          <label className="flex items-center gap-2 text-base text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base text-fg-secondary cursor-pointer">
             <input
               type="radio"
               name="bulletMarker"
@@ -125,7 +125,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
             />
             <span>Dash (-)</span>
           </label>
-          <label className="flex items-center gap-2 text-base text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base text-fg-secondary cursor-pointer">
             <input
               type="radio"
               name="bulletMarker"
@@ -135,7 +135,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
             />
             <span>Asterisk (*)</span>
           </label>
-          <label className="flex items-center gap-2 text-base text-neutral-300 cursor-pointer">
+          <label className="flex items-center gap-2 text-base text-fg-secondary cursor-pointer">
             <input
               type="radio"
               name="bulletMarker"
@@ -150,7 +150,7 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
 
       {/* Base URL */}
       <div>
-        <label className="block text-sm font-medium text-neutral-400 uppercase tracking-wider mb-2">
+        <label className="block text-sm font-medium text-fg-muted uppercase tracking-wider mb-2">
           Base URL
         </label>
         <input
@@ -158,16 +158,16 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
           value={options.baseUrl || ''}
           onChange={(e) => updateOption('baseUrl', e.target.value || undefined)}
           placeholder="https://example.com"
-          className="w-full px-3 py-2 bg-neutral-800/50 border border-neutral-700/50 rounded text-base text-neutral-200 placeholder:text-neutral-500 focus:outline-none focus:border-accent-500/50"
+          className="w-full px-3 py-2 bg-elevated/50 border border-edge rounded text-base text-fg-secondary placeholder:text-fg-faint focus:outline-none focus:border-accent-fg/50"
         />
-        <p className="text-sm text-neutral-500 mt-1">
+        <p className="text-sm text-fg-faint mt-1">
           For resolving relative links
         </p>
       </div>
 
       {/* Exclude Selectors */}
       <div>
-        <label className="block text-sm font-medium text-neutral-400 uppercase tracking-wider mb-2">
+        <label className="block text-sm font-medium text-fg-muted uppercase tracking-wider mb-2">
           Exclude Selectors
         </label>
         <input
@@ -180,16 +180,16 @@ export function OptionsPanel({ options, onChange }: OptionsPanelProps) {
             )
           }
           placeholder="nav, .sidebar, #ads"
-          className="w-full px-3 py-2 bg-neutral-800/50 border border-neutral-700/50 rounded text-base text-neutral-200 placeholder:text-neutral-500 focus:outline-none focus:border-accent-500/50"
+          className="w-full px-3 py-2 bg-elevated/50 border border-edge rounded text-base text-fg-secondary placeholder:text-fg-faint focus:outline-none focus:border-accent-fg/50"
         />
-        <p className="text-sm text-neutral-500 mt-1">
+        <p className="text-sm text-fg-faint mt-1">
           Comma-separated CSS selectors
         </p>
       </div>
 
       <button
         onClick={resetDefaults}
-        className="w-full px-3 py-2 text-base text-neutral-400 hover:text-neutral-200 border border-neutral-700/50 hover:border-neutral-600/50 rounded transition-colors"
+        className="w-full px-3 py-2 text-base text-fg-muted hover:text-fg-secondary border border-edge hover:border-edge-hover rounded transition-colors"
       >
         Reset Defaults
       </button>

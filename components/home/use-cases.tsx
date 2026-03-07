@@ -47,7 +47,7 @@ const markdown = convert(html, {
 
 export function UseCases() {
   return (
-    <section className="py-24 border-t border-neutral-800/50">
+    <section className="py-24 border-t border-edge/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ export function UseCases() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
             Built for Real-World Use
           </h2>
-          <p className="text-lg text-neutral-400 max-w-xl mx-auto">
+          <p className="text-lg text-fg-muted max-w-xl mx-auto">
             From scraping to AI pipelines, supermarkdown handles the messy HTML you encounter in production.
           </p>
         </motion.div>
@@ -71,19 +71,19 @@ export function UseCases() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group border border-neutral-800 rounded-md overflow-hidden bg-neutral-900/30 hover:border-neutral-700 transition-colors"
+              className="group border border-edge rounded-md overflow-hidden bg-surface/30 hover:border-edge-hover transition-colors"
             >
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <useCase.icon className="w-6 h-6 text-amber-500" />
-                  <h3 className="text-lg font-semibold text-neutral-100">{useCase.title}</h3>
+                  <h3 className="text-lg font-semibold text-fg">{useCase.title}</h3>
                 </div>
-                <p className="text-base text-neutral-400 leading-relaxed">
+                <p className="text-base text-fg-muted leading-relaxed">
                   {useCase.description}
                 </p>
               </div>
-              <div className="border-t border-neutral-800 bg-neutral-900/50 p-4">
-                <pre className="text-sm font-mono text-neutral-500 overflow-x-auto">
+              <div className="border-t border-edge bg-surface/50 p-4">
+                <pre className="text-sm font-mono text-fg-faint overflow-x-auto">
                   <code>{useCase.code}</code>
                 </pre>
               </div>

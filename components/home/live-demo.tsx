@@ -40,7 +40,7 @@ export function LiveDemo() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-semibold mb-12 text-center text-neutral-200"
+          className="text-3xl md:text-4xl font-semibold mb-12 text-center text-fg-secondary"
         >
           Live Demo
         </motion.h2>
@@ -55,22 +55,22 @@ export function LiveDemo() {
           {/* The Interactive Bridge */}
           <div className="grid md:grid-cols-[1fr,100px,1fr] gap-0 items-stretch">
             {/* HTML Input Pane */}
-            <div className="relative border border-neutral-800 rounded-md overflow-hidden bg-neutral-900/50">
+            <div className="relative border border-edge rounded-md overflow-hidden bg-surface/50">
               {/* Status bar */}
-              <div className="flex items-center gap-2 px-4 py-2 border-b border-neutral-800 bg-neutral-900">
+              <div className="flex items-center gap-2 px-4 py-2 border-b border-edge bg-surface">
                 <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-neutral-700" />
-                  <div className="w-3 h-3 rounded-full bg-neutral-700" />
-                  <div className="w-3 h-3 rounded-full bg-neutral-700" />
+                  <div className="w-3 h-3 rounded-full bg-edge-hover" />
+                  <div className="w-3 h-3 rounded-full bg-edge-hover" />
+                  <div className="w-3 h-3 rounded-full bg-edge-hover" />
                 </div>
-                <span className="text-sm font-mono text-neutral-400 ml-2">
+                <span className="text-sm font-mono text-fg-muted ml-2">
                   HTML
                 </span>
               </div>
               <textarea
                 value={html}
                 onChange={(e) => setHtml(e.target.value)}
-                className="w-full h-52 p-4 bg-transparent font-mono text-base resize-none focus:outline-none text-neutral-300"
+                className="w-full h-52 p-4 bg-transparent font-mono text-base resize-none focus:outline-none text-fg-secondary"
                 spellCheck={false}
               />
             </div>
@@ -78,7 +78,7 @@ export function LiveDemo() {
             {/* Beam Connector */}
             <div className="hidden md:flex items-center justify-center relative overflow-hidden">
               {/* Static line */}
-              <div className="absolute w-full h-px bg-neutral-800" />
+              <div className="absolute w-full h-px bg-edge" />
 
               {/* Animated beam */}
               <AnimatePresence>
@@ -103,15 +103,15 @@ export function LiveDemo() {
             </div>
 
             {/* Markdown Output Pane */}
-            <div className="relative border border-neutral-800 rounded-md overflow-hidden bg-neutral-900/50">
+            <div className="relative border border-edge rounded-md overflow-hidden bg-surface/50">
               {/* Status bar */}
-              <div className="flex items-center gap-2 px-4 py-2 border-b border-neutral-800 bg-neutral-900">
+              <div className="flex items-center gap-2 px-4 py-2 border-b border-edge bg-surface">
                 <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-neutral-700" />
-                  <div className="w-3 h-3 rounded-full bg-neutral-700" />
-                  <div className="w-3 h-3 rounded-full bg-neutral-700" />
+                  <div className="w-3 h-3 rounded-full bg-edge-hover" />
+                  <div className="w-3 h-3 rounded-full bg-edge-hover" />
+                  <div className="w-3 h-3 rounded-full bg-edge-hover" />
                 </div>
-                <span className="text-sm font-mono text-neutral-400 ml-2">
+                <span className="text-sm font-mono text-fg-muted ml-2">
                   Markdown
                 </span>
                 {/* Status indicator */}
@@ -123,9 +123,9 @@ export function LiveDemo() {
                   />
                 </div>
               </div>
-              <div className="w-full h-52 p-4 font-mono text-base overflow-auto whitespace-pre-wrap text-neutral-300">
+              <div className="w-full h-52 p-4 font-mono text-base overflow-auto whitespace-pre-wrap text-fg-secondary">
                 {isLoading ? (
-                  <span className="text-neutral-500">Loading WASM...</span>
+                  <span className="text-fg-faint">Loading WASM...</span>
                 ) : (
                   result?.markdown || ''
                 )}
@@ -140,7 +140,7 @@ export function LiveDemo() {
               animate={{ opacity: 1 }}
               className="flex justify-center mt-6"
             >
-              <span className="inline-flex items-center gap-2 text-sm font-mono text-neutral-400 bg-neutral-900 border border-neutral-800 rounded-full px-4 py-1.5">
+              <span className="inline-flex items-center gap-2 text-sm font-mono text-fg-muted bg-surface border border-edge rounded-full px-4 py-1.5">
                 <span className="w-2 h-2 rounded-full bg-green-500" />
                 {result.timing.toFixed(2)}ms
               </span>

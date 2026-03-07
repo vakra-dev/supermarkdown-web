@@ -9,14 +9,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Static accent colors (same in both themes)
         accent: {
           400: '#fbbf24',
           500: '#f59e0b',
           600: '#d97706',
         },
+        // Keep neutral-950 for playground (unchanged)
         neutral: {
           950: '#09090b',
         },
+        // Semantic theme colors (respond to light/dark via CSS vars)
+        page: 'rgb(var(--page) / <alpha-value>)',
+        surface: 'rgb(var(--surface) / <alpha-value>)',
+        elevated: 'rgb(var(--elevated) / <alpha-value>)',
+        fg: {
+          DEFAULT: 'rgb(var(--fg) / <alpha-value>)',
+          secondary: 'rgb(var(--fg-secondary) / <alpha-value>)',
+          tertiary: 'rgb(var(--fg-tertiary) / <alpha-value>)',
+          muted: 'rgb(var(--fg-muted) / <alpha-value>)',
+          faint: 'rgb(var(--fg-faint) / <alpha-value>)',
+        },
+        edge: {
+          DEFAULT: 'rgb(var(--edge) / <alpha-value>)',
+          hover: 'rgb(var(--edge-hover) / <alpha-value>)',
+        },
+        'accent-fg': 'rgb(var(--accent-fg) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

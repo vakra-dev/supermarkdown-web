@@ -29,7 +29,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-xl md:text-2xl text-[var(--text-secondary)] mb-10"
+          className="text-xl md:text-2xl text-fg-tertiary mb-10"
         >
           Fast. Simple. Complete.
         </motion.p>
@@ -54,9 +54,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="inline-flex items-center gap-3 bg-[var(--bg-surface)] border border-[var(--border)] rounded-md px-4 py-3 hover:border-[var(--border-hover)] transition-colors"
+          className="inline-flex items-center gap-3 bg-surface border border-edge rounded-md px-4 py-3 hover:border-edge-hover transition-colors"
         >
-          <code className="text-base md:text-lg font-mono text-[var(--text-secondary)]">
+          <code className="text-base md:text-lg font-mono text-fg-tertiary">
             {installCommand}
           </code>
           <CopyButton text={installCommand} />

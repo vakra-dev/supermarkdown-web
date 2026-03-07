@@ -4,8 +4,10 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { PromoBanner } from '@/components/layout/promo-banner';
 import { MainContent } from '@/components/layout/main-content';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://supermarkdown.dev'),
   title: {
     default: 'supermarkdown - HTML to Markdown Converter',
     template: '%s | supermarkdown',
@@ -31,12 +33,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col antialiased bg-neutral-950">
-        <PromoBanner />
-        <Header />
-        <MainContent>{children}</MainContent>
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('supermarkdown-theme')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}`,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: `{"@context":"https://schema.org","@type":"Organization","name":"supermarkdown","url":"https://supermarkdown.dev","logo":"https://supermarkdown.dev/og-image.png","sameAs":["https://github.com/vakra-dev/supermarkdown"]}` }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: `{"@context":"https://schema.org","@type":"SoftwareApplication","name":"supermarkdown","url":"https://supermarkdown.dev","applicationCategory":"DeveloperApplication","operatingSystem":"Any","description":"Convert HTML to Markdown with full GFM support. Tables, code blocks, nested lists, and more. Fast, simple, complete.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}` }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col antialiased bg-page">
+        <ThemeProvider>
+          <PromoBanner />
+          <Header />
+          <MainContent>{children}</MainContent>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

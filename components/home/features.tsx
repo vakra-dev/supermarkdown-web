@@ -65,7 +65,7 @@ export function Features() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient">
             Built for Performance
           </h2>
-          <p className="text-lg text-[var(--text-muted)] max-w-xl mx-auto">
+          <p className="text-lg text-fg-muted max-w-xl mx-auto">
             A Rust-powered conversion engine that handles real-world HTML with precision.
           </p>
         </motion.div>
@@ -81,15 +81,15 @@ export function Features() {
             <motion.div
               key={feature.title}
               variants={cardVariants}
-              className="group relative p-6 border border-neutral-800 rounded-md bg-transparent transition-all duration-300 hover:border-neutral-700 overflow-hidden"
+              className="group relative p-6 border border-edge rounded-md bg-transparent transition-all duration-300 hover:border-edge-hover overflow-hidden"
             >
               {/* Amber glow on hover - top left corner */}
               <div className="absolute -top-12 -left-12 w-24 h-24 bg-accent-500/0 rounded-full blur-2xl transition-all duration-500 group-hover:bg-accent-500/20" />
 
               <div className="relative z-10">
-                <feature.icon className="w-6 h-6 text-neutral-400 mb-4 transition-colors duration-300 group-hover:text-accent-500" />
-                <h3 className="text-lg font-semibold mb-2 text-neutral-100">{feature.title}</h3>
-                <p className="text-base text-neutral-400 leading-relaxed">{feature.description}</p>
+                <feature.icon className="w-6 h-6 text-fg-muted mb-4 transition-colors duration-300 group-hover:text-accent-500" />
+                <h3 className="text-lg font-semibold mb-2 text-fg">{feature.title}</h3>
+                <p className="text-base text-fg-muted leading-relaxed">{feature.description}</p>
               </div>
             </motion.div>
           ))}

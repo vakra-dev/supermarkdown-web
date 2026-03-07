@@ -43,14 +43,14 @@ function NavLink({
           depth > 0 ? 'ml-3 text-[13px]' : ''
         } ${
           isActive
-            ? 'text-amber-400 bg-neutral-800/40'
-            : 'text-neutral-300 hover:text-neutral-100 hover:bg-neutral-800/30'
+            ? 'text-accent-fg bg-elevated/40'
+            : 'text-fg-secondary hover:text-fg hover:bg-elevated/30'
         }`}
       >
         {item.title}
       </Link>
       {item.children && (
-        <ul className="mt-1 ml-3 pl-3 border-l border-neutral-800">
+        <ul className="mt-1 ml-3 pl-3 border-l border-edge">
           {item.children.map((child) => (
             <NavLink key={child.href} item={child} depth={depth + 1} currentHash={currentHash} onHashChange={onHashChange} />
           ))}
@@ -77,9 +77,9 @@ export function Sidebar() {
   }, []);
 
   return (
-    <aside className="w-56 shrink-0 border-r border-neutral-800/50 bg-neutral-900/30 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto">
+    <aside className="w-56 shrink-0 border-r border-edge/50 bg-surface/30 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto">
       <nav className="py-6 px-3">
-        <div className="text-xs font-medium text-neutral-400 uppercase tracking-wider px-3 mb-3">
+        <div className="text-xs font-medium text-fg-muted uppercase tracking-wider px-3 mb-3">
           Documentation
         </div>
         <ul className="space-y-0.5">
