@@ -20,6 +20,7 @@ export function generateWebAppSchema(tool: ToolConfig) {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: tool.h1,
+    description: tool.description,
     url: `https://supermarkdown.dev/tools/${tool.slug}`,
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Any',

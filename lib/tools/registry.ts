@@ -179,6 +179,11 @@ export const tools: ToolConfig[] = [
         answer:
           'Arrays of objects become tables. Single objects become key-value lists. Nested JSON is supported.',
       },
+      {
+        question: 'Can I convert nested JSON?',
+        answer:
+          'Yes. Nested objects and arrays are flattened into readable Markdown. Deeply nested structures are rendered as indented lists or wrapped in code blocks depending on the output mode.',
+      },
     ],
     related: ['csv-to-markdown', 'markdown-table', 'html-to-markdown'],
     howTo: [
@@ -206,6 +211,11 @@ export const tools: ToolConfig[] = [
         question: 'Is my content saved?',
         answer:
           'Content is stored in your browser only. Nothing is uploaded to any server.',
+      },
+      {
+        question: 'Does the editor support GFM tables?',
+        answer:
+          'Yes. The editor renders GitHub Flavored Markdown including tables, task lists, strikethrough, and fenced code blocks with syntax highlighting.',
       },
     ],
     related: ['markdown-to-html', 'markdown-table', 'markdown-formatter'],
@@ -235,6 +245,11 @@ export const tools: ToolConfig[] = [
         answer:
           'Yes. Paste CSV or tab-separated data and it will be converted into the table grid.',
       },
+      {
+        question: 'How many rows and columns are supported?',
+        answer:
+          'There is no hard limit. The tool runs in your browser, so performance depends on your device. Tables with hundreds of rows and dozens of columns work on modern hardware.',
+      },
     ],
     related: ['csv-to-markdown', 'json-to-markdown', 'markdown-editor'],
     howTo: [
@@ -258,6 +273,16 @@ export const tools: ToolConfig[] = [
         answer:
           'Paste two Markdown documents and the tool highlights differences - additions in green, deletions in red, and modifications in yellow.',
       },
+      {
+        question: 'Can I compare large documents?',
+        answer:
+          'Yes. The diff runs entirely in your browser with no size limits. Performance depends on your device, but documents with thousands of lines work well on modern hardware.',
+      },
+      {
+        question: 'What diff algorithm is used?',
+        answer:
+          'The tool uses a line-level diff algorithm that identifies inserted, deleted, and changed lines. It groups adjacent changes into hunks for easier reading.',
+      },
     ],
     related: ['markdown-editor', 'markdown-formatter', 'html-to-markdown'],
     howTo: [
@@ -280,6 +305,16 @@ export const tools: ToolConfig[] = [
         question: 'What does the formatter do?',
         answer:
           'It normalizes heading styles, list markers, spacing around blocks, and trims trailing whitespace for consistent, clean Markdown.',
+      },
+      {
+        question: 'Does it change my content?',
+        answer:
+          'No. The formatter only changes whitespace, heading styles, and list markers. Your actual text content, links, images, and code blocks remain unchanged.',
+      },
+      {
+        question: 'What style does it normalize to?',
+        answer:
+          'ATX headings (# style), consistent dash list markers, single blank lines between blocks, and no trailing whitespace. This matches common Markdown linter defaults.',
       },
     ],
     related: ['markdown-editor', 'markdown-diff', 'html-to-markdown'],

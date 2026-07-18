@@ -425,7 +425,6 @@ code, pre, .font-mono {
 
 /* ─── Page-specific overrides ─── */
 
-body.playground-page footer,
-body.tools-page footer {
+body.playground-page footer {
   display: none;
 }

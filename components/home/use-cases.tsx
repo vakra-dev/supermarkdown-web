@@ -90,6 +90,19 @@ export function UseCases() {
             </motion.div>
           ))}
         </div>
+
+        <p className="text-sm text-fg-muted text-center mt-8 max-w-xl mx-auto">
+          Supermarkdown powers Markdown conversion workflows in{' '}
+          <a
+            href="https://reader.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent-fg hover:text-accent-fg/80 transition-colors"
+          >
+            Reader
+          </a>
+          , the web context API for AI agents.
+        </p>
       </div>
     </section>
   );

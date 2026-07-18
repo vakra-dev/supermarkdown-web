@@ -1,5 +1,6 @@
 import { ToolConfig } from '@/lib/tools/registry';
 import { FAQ } from './FAQ';
+import { ReaderCallout } from './ReaderCallout';
 import { RelatedTools } from './RelatedTools';
 
 export function ToolLayout({
@@ -12,7 +13,7 @@ export function ToolLayout({
   return (
     <>
       {/* H1 + description - server rendered, always crawlable */}
-      <header className="px-4 pt-8 pb-4 container mx-auto">
+      <header className="px-4 pt-24 pb-4 container mx-auto">
         <h1 className="text-3xl md:text-4xl font-bold text-fg mb-2">{config.h1}</h1>
         <p className="text-base text-fg-muted max-w-2xl">{config.description}</p>
       </header>
@@ -42,6 +43,9 @@ export function ToolLayout({
 
       {/* FAQ - server rendered with schema markup */}
       <FAQ items={config.faq} />
+
+      {/* Reader cross-link */}
+      <ReaderCallout toolSlug={config.slug} />
 
       {/* Related tools - internal links */}
       <RelatedTools slugs={config.related} />

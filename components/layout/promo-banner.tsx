@@ -24,7 +24,7 @@ export function PromoBanner() {
     <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-accent-500 to-accent-600 text-white">
       <div className="container mx-auto py-2.5 px-4 flex items-center justify-center relative">
         <div className="flex items-center justify-center gap-2 text-sm font-medium">
-          <span>Scrape any webpage to LLM-ready Markdown with</span>
+          <span>Turn public webpages into LLM-ready Markdown with</span>
           <a
             href="https://reader.dev"
             target="_blank"

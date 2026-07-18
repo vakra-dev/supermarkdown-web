@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   description:
     'Convert, edit, and format Markdown - powered by Rust WASM. All tools are free. No sign-up required.',
   alternates: { canonical: 'https://supermarkdown.dev/tools' },
+  openGraph: {
+    title: 'Free Markdown Converter & Tools Online',
+    description:
+      'Convert, edit, and format Markdown - powered by Rust WASM. All tools are free. No sign-up required.',
+    url: 'https://supermarkdown.dev/tools',
+    siteName: 'supermarkdown',
+    type: 'website',
+    images: ['/og-image.png'],
+  },
 };
 
 const liveTools = tools.filter((t) => implementedSlugs.has(t.slug));
@@ -16,7 +25,7 @@ const utilities = liveTools.filter((t) => t.category === 'tool');
 
 export default function ToolsHubPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 pt-24 pb-12">
       <header className="mb-12">
         <h1 className="text-3xl md:text-4xl font-bold text-fg mb-3">
           Free Markdown Converter & Tools
