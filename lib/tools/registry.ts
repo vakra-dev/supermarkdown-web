@@ -17,7 +17,7 @@ export const tools: ToolConfig[] = [
     title: 'HTML to Markdown Converter - Free Online',
     h1: 'HTML to Markdown Converter',
     description:
-      'Free online HTML to Markdown converter powered by Rust WASM. 10x faster than alternatives, runs entirely in your browser. No sign-up required.',
+      'Free online HTML to Markdown converter powered by Rust WASM. ~5x faster than alternatives, runs entirely in your browser. No sign-up required.',
     category: 'converter',
     priority: 'P0',
     keywords: ['html to markdown', 'html to md', 'html markdown converter'],
@@ -40,7 +40,7 @@ export const tools: ToolConfig[] = [
       {
         question: 'How fast is the conversion?',
         answer:
-          'Our Rust WASM engine converts typical web pages in under 1ms - 10-50x faster than JavaScript-based converters.',
+          'Our Rust WASM engine converts typical web pages in under 1ms - roughly 5x faster than JavaScript-based converters.',
       },
     ],
     related: ['markdown-to-html', 'markdown-to-docx', 'csv-to-markdown'],

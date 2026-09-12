@@ -7,7 +7,7 @@ const features = [
   {
     icon: Zap,
     title: 'Blazing Fast',
-    description: 'Written in Rust, compiled to WASM. 10-50x faster than JavaScript alternatives.',
+    description: 'Written in Rust, compiled to WASM. ~5x faster than JavaScript alternatives.',
   },
   {
     icon: Table,

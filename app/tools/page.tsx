@@ -66,7 +66,7 @@ export default function ToolsHubPage() {
           </p>
           <p>
             Our HTML to Markdown converter is powered by a Rust engine compiled to WebAssembly,
-            delivering conversion speeds 10-50x faster than JavaScript alternatives. The performance
+            delivering conversion speeds roughly 5x faster than JavaScript alternatives. The performance
             difference is measurable and displayed after every conversion.
           </p>
           <p>
